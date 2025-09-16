@@ -2,81 +2,87 @@
 using System.Numerics;
 namespace BaiTapCSharp
 {
-    class PhanSo
+    class Program
     {
-        public int Tu;
-        public int Mau;
-        public PhanSo(int tu, int mau)
+        public static void Main(string[] args)
         {
-            Tu = tu;
-            Mau = mau;
+            Fraction a;
+            Fraction b;
+
+            Console.WriteLine("Enter two fractions to perform operations: ");
+            Console.WriteLine("Enter the first fraction (numerator and denominator): ");
+            while (true) 
+            {
+                int numeratorA;
+                try
+                {
+                    Console.Write("Enter the numerator: ");
+                    numeratorA = int.Parse(Console.ReadLine()!);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error! Numerator must be a number. Please enter again.");
+                    continue;
+                }
+                while (true)
+                {
+                    try
+                    {
+                        Console.Write("Enter the denomiator: ");
+                        int denominatorA = int.Parse(Console.ReadLine()!);
+                        a = new Fraction(numeratorA, denominatorA);
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Error! Denominator must be a number. Please enter again.");
+                    }
+                }
+                break;
+                
+            }
+
+            Console.WriteLine("Enter the second fraction (numerator and denominator): ");
+            while (true)
+            {
+                int numeratorB;
+                try
+                {
+                    Console.Write("Enter the numerator: ");
+                    numeratorB = int.Parse(Console.ReadLine()!);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error! Numerator must be a number. Please enter again.");
+                    continue;
+                }
+                while (true)
+                {
+                    try
+                    {
+                        Console.Write("Enter the denomiator: ");
+                        int denominatorB = int.Parse(Console.ReadLine()!);
+                        b = new Fraction(numeratorB, denominatorB);
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Error! Denominator must be a number. Please enter again.");
+                    }
+                }
+                break;
+
+            }
+            Console.WriteLine("Sum of two fractions: " + (a + b));
+            Console.WriteLine("Difference of two fractions: " + (a - b));
+            Console.WriteLine("Product of two fractions: " + (a * b));
+            Console.WriteLine("Quotient of two fractions: " + (a / b));
+
+
+
         }
 
-        public PhanSo() { }
 
-        static int ucln(int a, int b)
-        {
-            return Math.Abs((int)BigInteger.GreatestCommonDivisor(a, b));
-        }
-        static PhanSo Tong(PhanSo a, PhanSo b)
-        {
-            int tu = a.Tu * b.Mau + b.Tu * a.Mau;
-            int mau = a.Mau * b.Mau;
-            int UCLN = ucln(tu, mau);
-            tu /= UCLN;
-            mau /= UCLN;
-            return new PhanSo(tu, mau);
-        }
-
-        static PhanSo Hieu(PhanSo a, PhanSo b)
-        {
-            int tu = a.Tu * b.Mau - b.Tu * a.Mau;
-            int mau = a.Mau * b.Mau;
-            int UCLN = ucln(tu, mau);
-            tu /= UCLN;
-            mau /= UCLN;
-            return new PhanSo(tu, mau);
-        }
-
-        static PhanSo Tich(PhanSo a, PhanSo b)
-        {
-            int tu = a.Tu * b.Tu;
-            int mau = a.Mau * b.Mau;
-            int UCLN = ucln(tu, mau);
-            tu /= UCLN;
-            mau /= UCLN;
-            return new PhanSo(tu, mau);
-        }
-
-        static PhanSo Thuong(PhanSo a, PhanSo b)
-        {
-            int tu = a.Tu * b.Mau;
-            int mau = a.Mau * b.Tu;
-            int UCLN = ucln(tu, mau);
-            tu /= UCLN;
-            mau /= UCLN;
-            return new PhanSo(tu, mau);
-        }
-
-        public override string ToString()
-        {
-            return $"{Tu}/{Mau}";
-        }
-
-        static void Main(string[] args)
-        {
-            PhanSo a = new PhanSo();
-            PhanSo b = new PhanSo();
-            Console.WriteLine("Nhap phan so a: ");
-            a.Tu = int.Parse(Console.ReadLine()!);
-            a.Mau = int.Parse(Console.ReadLine()!);
-            Console.WriteLine("Nhap phan so b: ");
-            b.Tu = int.Parse(Console.ReadLine()!);
-            b.Mau = int.Parse(Console.ReadLine()!);
-            Console.WriteLine("Tong hai phan so la: " + Tong(a, b));
-            Console.WriteLine("Hieu hai phan so la: " + Hieu(a, b));
-            Console.WriteLine("Tich hai phan so la: " + Tich(a, b));
-            Console.WriteLine("Thuong hai phan so la: " + Thuong(a, b));
-        }
+        
     }
 }

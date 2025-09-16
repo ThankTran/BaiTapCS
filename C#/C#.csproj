@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>C_</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
+	  <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
