@@ -33,6 +33,49 @@ namespace BaiTapCSharp
             }
         }
 
+        public void Nhap()
+        {
+
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Enter the numerator: ");
+                    _numerator = int.Parse(Console.ReadLine()!);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error! Numerator must be a number. Please enter again.");
+                    continue;
+                }
+                break;
+            }
+            
+
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Enter the denomiator: ");
+                    int _denominator;
+                    _denominator = int.Parse(Console.ReadLine()!);
+                    if (_denominator == 0)
+                    {
+                        Console.WriteLine("Error! Denominator cannot be zero. Please enter again.");
+                        continue;
+                    }
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error! Denominator must be a number. Please enter again.");
+                }
+            }
+                //break;
+
+            
+            Simplify();
+        }
         private static int GreatestCommonDivisor(int a, int b)
         {
             return Math.Abs((int)BigInteger.GreatestCommonDivisor(a, b));
