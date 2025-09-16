@@ -62,7 +62,7 @@ namespace BaiTapCSharp
         public static Fraction operator/(Fraction a, Fraction b)
         {
             if (b._numerator == 0)
-                throw new DivideByZeroException("Không thể chia cho phân số có tử số bằng 0.");
+                throw new DivideByZeroException("Cannot divide by a number of dials with zero");
             int numerator = a._numerator * b._denominator;
             int denominator = a._denominator * b._numerator;
             return new Fraction(numerator, denominator);
